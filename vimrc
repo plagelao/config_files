@@ -1,97 +1,141 @@
+" Load all the bundles
 filetype off
 call pathogen#runtime_append_all_bundles()
-syntax on
-filetype plugin indent on
-set modelines=0
-set nocompatible
 
+let mapleader = ","
+let maplocalleader = ","
+
+" file syntax color on
+syntax on
+  " set filetype given its extension (on new and on read)
+  " Use .as for ActionScript files, not Atlas files.
+  au BufNewFile,BufRead *.as set filetype=actionscript
+  au BufNewFile,BufRead *.ru set filetype=ruby
+  au BufNewFile,BufRead Gemfile set filetype=ruby
+  au BufNewFile,BufRead *.md set filetype=mkd
+
+" colors
+colorscheme tir_black
+set t_Co=256
+
+" encoding
+set encoding=utf-8
+
+" indentation and tabs
+filetype plugin indent on
 set tabstop=2
 set softtabstop=2
 set smarttab
-set shiftwidth=2
 set expandtab
-
 set autoindent
-set encoding=utf-8
-set showmode
-set showcmd
+  " no expand tab for make and python
+  autocmd FileType make     set noexpandtab
+  autocmd FileType python   set noexpandtab
 
-" From http://items.sjbach.com/319/configuring-vim-right
-set hidden
-let mapleader = ","
-let maplocalleader = ","
-set history=1000
-set wildmenu
-set wildmode=list:longest
-set ignorecase
-set smartcase
-set title
-set ttyfast
-set cursorline
+" scrolling
 set scrolloff=3
-set backupdir=~/.vim/backups,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim/backups,~/.tmp,~/tmp,/var/tmp,/tmp
+set shiftwidth=2
 
-nnoremap <tab> %
-vnoremap <tab> %
-nnoremap <C-e> 3<C-e>
-nnoremap <C-y> 3<C-y>
-set gdefault
-set backspace=indent,eol,start
+" shows when you are in insert mode
+set showmode
 
-" File-type highlighting and configuration.
-" Run :filetype (without args) to see what you may have
-" to turn on yourself, or just set them all to be sure.
-set incsearch
-set shortmess=atI
-set visualbell
-" From http://weblog.jamisbuck.org/2008/11/17/vim-follow-up
-set grepprg=ack
-set grepformat=%f:%l:%m
-autocmd FileType make     set noexpandtab
-autocmd FileType python   set noexpandtab
+" status line
+set showcmd
+set title
 set ruler
 set number
-set hlsearch
-syntax on
-
-map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
-
-" From http://biodegradablegeek.com/2007/12/using-vim-as-a-complete-ruby-on-rails-ide/
-set cf  " Enable error files & error jumping.
-set clipboard+=unnamed  " Yanks go on clipboard instead.
-set autowrite  " Writes on make/shell commands
-set showmatch
+set shortmess=atI
+set visualbell
 set laststatus=2
+set statusline=%f\ %(%m%r%h\ %)%([%Y]%)%=%<%-20{getcwd()}\ [b%n]\ %l/%L\ ~\ %p%%\ \
 
-"Save on losing focus
-"au FocusLost * :wa
+" intuitive backspacing in insert mode
+set backspace=indent,eol,start
 
-"My own keybindings
-map <leader>gd :GitDiff<CR>
-map <leader>gs :GitStatus<CR>
-map <leader>gc :GitCommit<CR>
-nnoremap <leader><space> :noh<cr>
-nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-map <leader>f :set nofu<CR>:set lines=100 columns=400 fu<CR>
-map <leader>id !!date +'\%Y-\%m-\%d \%T \%z'<CR>
-map <leader>pc :ColorHEX<CR>
+" case insensitive searching but, any search with an uppercase character becomes a case sensitive search
+set ignorecase
+set smartcase
 
-" Use .as for ActionScript files, not Atlas files.
-au BufNewFile,BufRead *.as set filetype=actionscript
-au BufNewFile,BufRead *.ru set filetype=ruby
-au BufNewFile,BufRead Gemfile set filetype=ruby
-au BufNewFile,BufRead *.md set filetype=mkd
+" highlight the line containing the cursor
+set cursorline
 
-" Understand :W as :w
-command! W :w
+" highlight search terms...
+set incsearch
+set hlsearch
+  " remove highlighting mapping
+  nnoremap <leader><space> :noh<cr>
 
-" Show unwanted whitespace
+" shows unwanted whitespace
 set listchars=tab:-✈,trail:,extends:>
 set list!
 
-" Status line
-set statusline=%f\ %(%m%r%h\ %)%([%Y]%)%=%<%-20{getcwd()}\ [b%n]\ %l/%L\ ~\ %p%%\ \
-colorscheme tir_black
-set t_Co=256
+" enable unsaved buffers
+set hidden
+
+" file name completion completes only the longest possible part (bash style)
+set wildmode=list:longest
+set wildmenu
+
+" sets how many lines of history VIM has to remember
+set history=1000
+
+" indicates a fast terminal connection
+set ttyfast
+
+" no vi compatibility
+set nocompatible
+
+" as rails IDE
+" From http://biodegradablegeek.com/2007/12/using-vim-as-a-complete-ruby-on-rails-ide/
+  " ask what to do about unsaved/read-only files
+  set cf  " Enable error files & error jumping.
+  " save the file when you change buffers
+  set autowrite  " Writes on make/shell commands
+  " Show matching brackets
+  set showmatch
+
+" remove swap and backup files from your working directory
+set backupdir=~/.vim/backups,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim/backups,~/.tmp,~/tmp,/var/tmp,/tmp
+
+" understands :W as :w
+command! W :w
+
+" tab matches brackets
+  " in normal mode
+  nnoremap <tab> %
+  " in visual mode
+  vnoremap <tab> %
+
+" change buffer mapping
+nnoremap <leader>6 :b#<CR>
+
+" remove spaces mapping
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+" change symbol key hashes to ruby 1.9 syntax mapper
 map <leader>H :%s/:\(\w\+\) =>/\1:<CR>``
+
+" Ack maping
+nnoremap <leader>a :Ack 
+
+" NERDTree maping
+map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
+
+" git commands mapping
+map <leader>gd :GitDiff<CR>
+map <leader>gs :GitStatus<CR>
+map <leader>gc :GitCommit<CR>
+
+" change line for formatted date mapping
+map <leader>id !!date +'\%Y-\%m-\%d \%T \%z'<CR>
+
+" lets you insert hex or RGB color codes directly into the buffer by using OS
+" X's color picker
+map <leader>pc :ColorHEX<CR>
+
+" From here I have no idea what it means
+set modelines=10
+
+"Save on losing focus
+"au FocusLost * :wa
