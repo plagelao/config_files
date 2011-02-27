@@ -38,13 +38,11 @@ set showmode
 
 " status line
 set showcmd
-set title
-set ruler
-set number
-set shortmess=atI
-set visualbell
 set laststatus=2
 set statusline=%f\ %(%m%r%h\ %)%([%Y]%)%=%<%-20{getcwd()}\ [b%n]\ %l/%L\ ~\ %p%%\ \
+
+" shows line numbers
+set number
 
 " intuitive backspacing in insert mode
 set backspace=indent,eol,start
