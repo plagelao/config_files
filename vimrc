@@ -2,27 +2,24 @@
 filetype off
 call pathogen#runtime_append_all_bundles()
 
+filetype plugin on " loads file type associated plugin 
+
 let mapleader = ","
 let maplocalleader = ","
 
 " file syntax color on
 syntax on
-  " set filetype given its extension (on new and on read)
-  " Use .as for ActionScript files, not Atlas files.
-  au BufNewFile,BufRead *.as set filetype=actionscript
-  au BufNewFile,BufRead *.ru set filetype=ruby
-  au BufNewFile,BufRead Gemfile set filetype=ruby
-  au BufNewFile,BufRead *.md set filetype=mkd
+filetype on
 
 " colors
-colorscheme tir_black
 set t_Co=256
+colorscheme tir_black
 
 " encoding
 set encoding=utf-8
 
 " indentation and tabs
-filetype plugin indent on
+filetype indent on
 set tabstop=2
 set softtabstop=2
 set smarttab
@@ -52,12 +49,12 @@ set statusline=%f\ %(%m%r%h\ %)%([%Y]%)%=%<%-20{getcwd()}\ [b%n]\ %l/%L\ ~\ %p%%
 " intuitive backspacing in insert mode
 set backspace=indent,eol,start
 
+" highlight the line containing the cursor
+set cursorline
+
 " case insensitive searching but, any search with an uppercase character becomes a case sensitive search
 set ignorecase
 set smartcase
-
-" highlight the line containing the cursor
-set cursorline
 
 " highlight search terms...
 set incsearch
@@ -112,6 +109,7 @@ nnoremap <leader>6 :b#<CR>
 
 " remove spaces mapping
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+nnoremap <leader>T :%s/\t/  /<cr>
 
 " change symbol key hashes to ruby 1.9 syntax mapper
 map <leader>H :%s/:\(\w\+\) =>/\1:<CR>``
