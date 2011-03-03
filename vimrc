@@ -5,7 +5,6 @@ call pathogen#runtime_append_all_bundles()
 filetype plugin on " loads file type associated plugin 
 
 let mapleader = ","
-let maplocalleader = ","
 
 " file syntax color on
 syntax on
