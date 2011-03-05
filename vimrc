@@ -1,7 +1,3 @@
-" Load all the bundles
-"filetype off
-"call pathogen#runtime_append_all_bundles()
-
 " vundle
 set rtp+=~/.vim/vundle.git/
 call vundle#rc()
@@ -23,6 +19,8 @@ Bundle "endwise.vim"
 Bundle "surround.vim"
 " Pairs of handy bracket mappings
 Bundle "unimpaired.vim"
+" Ruby refactoring tool
+Bundle "http://github.com/ecomba/vim-ruby-refactoring.git"
 
 
 filetype plugin on " loads file type associated plugin 
