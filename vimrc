@@ -1,6 +1,29 @@
 " Load all the bundles
-filetype off
-call pathogen#runtime_append_all_bundles()
+"filetype off
+"call pathogen#runtime_append_all_bundles()
+
+" vundle
+set rtp+=~/.vim/vundle.git/
+call vundle#rc()
+
+" Bundles
+" Ruby on Rails: easy file navigation, enhanced syntax highlighting, and more
+Bundle "rails.vim"
+" plugin for ack
+Bundle "ack.vim"
+" A tree explorer plugin for navigating the filesystem
+Bundle "The-NERD-tree"
+" provides syntax highlightling, indenting, and a filetype plugin for Cucumber
+Bundle "cucumber.zip"
+" provides haml syntax highlightling
+Bundle "Haml"
+" Wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
+Bundle "endwise.vim"
+" Delete/change/add parentheses/quotes/XML-tags/much more with ease
+Bundle "surround.vim"
+" Pairs of handy bracket mappings
+Bundle "unimpaired.vim"
+
 
 filetype plugin on " loads file type associated plugin 
 
