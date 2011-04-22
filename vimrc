@@ -11,8 +11,6 @@ Bundle "ack.vim"
 Bundle "The-NERD-tree"
 " provides syntax highlightling, indenting, and a filetype plugin for Cucumber
 Bundle "cucumber.zip"
-" provides haml syntax highlightling
-Bundle "Haml"
 " Wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
 Bundle "endwise.vim"
 " Delete/change/add parentheses/quotes/XML-tags/much more with ease
