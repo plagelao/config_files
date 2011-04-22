@@ -138,10 +138,6 @@ nnoremap <leader>a :Ack
 " NERDTree maping
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 
-" git commands mapping
-map <leader>gd :GitDiff<CR>
-map <leader>gs :GitStatus<CR>
-map <leader>gc :GitCommit<CR>
 
 " change line for formatted date mapping
 map <leader>id !!date +'\%Y-\%m-\%d \%T \%z'<CR>
