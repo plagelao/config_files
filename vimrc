@@ -138,14 +138,6 @@ nnoremap <leader>a :Ack
 " NERDTree maping
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 
-
-" change line for formatted date mapping
-map <leader>id !!date +'\%Y-\%m-\%d \%T \%z'<CR>
-
-" lets you insert hex or RGB color codes directly into the buffer by using OS
-" X's color picker
-map <leader>pc :ColorHEX<CR>
-
 " From here I have no idea what it means
 set modelines=10
 
