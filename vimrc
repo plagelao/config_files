@@ -2,6 +2,10 @@
 set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
 " Bundles
 " Ruby on Rails: easy file navigation, enhanced syntax highlighting, and more
 Bundle "rails.vim"
@@ -19,6 +23,17 @@ Bundle "surround.vim"
 Bundle "unimpaired.vim"
 " Ruby refactoring tool
 Bundle "http://github.com/ecomba/vim-ruby-refactoring.git"
+" Clojure plugin
+Bundle "VimClojure"
+" CoffeeScript plugin
+Bundle "vim-coffee-script"
+" Solarized colorscheme
+Bundle "git://github.com/altercation/vim-colors-solarized.git"
+" Comma-T
+Bundle "Command-T"
+" Autocompile CoffeeScript files when saved
+autocmd BufWritePost *.coffee silent CoffeeMake! -b | cwindow
+
 
 
 filetype plugin on " loads file type associated plugin 
