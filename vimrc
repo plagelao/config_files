@@ -162,3 +162,10 @@ set modelines=10
 
 "Makes vim notice the rvm configuration
 set shell=/bin/sh
+
+function! FindAndReplace(...)
+  let args =  a:000 + ['.']
+  execute  join(['args `Ack ',join(['-l', args[0], args[2]]),'`'])
+  execute join(['argdo %s', args[0], args[1], 'gec'], '/')
+endfunction
+command! -nargs=* -complete=file FindAndReplace call FindAndReplace(<f-args>)
