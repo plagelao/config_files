@@ -158,3 +158,7 @@ set modelines=10
 
 "Save on losing focus
 "au FocusLost * :wa
+
+
+"Makes vim notice the rvm configuration
+set shell=/bin/sh
