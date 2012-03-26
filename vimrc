@@ -41,12 +41,14 @@ filetype plugin on " loads file type associated plugin
 let mapleader = ","
 
 " file syntax color on
-syntax on
+syntax enable
 filetype on
 
 " colors
 set t_Co=256
-colorscheme tir_black
+let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized
 
 " encoding
 set encoding=utf-8
@@ -58,10 +60,10 @@ set softtabstop=2
 set smarttab
 set expandtab
 set autoindent
-  " no expand tab for make and python
-  autocmd FileType make     set noexpandtab
-  autocmd FileType python   set noexpandtab
-
+" no expand tab for make and python
+autocmd FileType make     set noexpandtab
+autocmd FileType python   set noexpandtab
+"
 " scrolling
 set scrolloff=3
 set shiftwidth=2
@@ -90,8 +92,8 @@ set smartcase
 " highlight search terms...
 set incsearch
 set hlsearch
-  " remove highlighting mapping
-  nnoremap <leader><space> :noh<cr>
+" remove highlighting mapping
+nnoremap <leader><space> :noh<cr>
 
 " shows unwanted whitespace
 set listchars=tab:-✈,trail:,extends:>
@@ -115,12 +117,12 @@ set nocompatible
 
 " as rails IDE
 " From http://biodegradablegeek.com/2007/12/using-vim-as-a-complete-ruby-on-rails-ide/
-  " ask what to do about unsaved/read-only files
-  set cf  " Enable error files & error jumping.
-  " save the file when you change buffers
-  set autowrite  " Writes on make/shell commands
-  " Show matching brackets
-  set showmatch
+" ask what to do about unsaved/read-only files
+set cf  " Enable error files & error jumping.
+" save the file when you change buffers
+set autowrite  " Writes on make/shell commands
+" Show matching brackets
+set showmatch
 
 " remove swap and backup files from your working directory
 set backupdir=~/.vim/backups,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -130,10 +132,10 @@ set directory=~/.vim/backups,~/.tmp,~/tmp,/var/tmp,/tmp
 command! W :w
 
 " tab matches brackets
-  " in normal mode
-  nnoremap <tab> %
-  " in visual mode
-  vnoremap <tab> %
+" in normal mode
+nnoremap <tab> %
+" in visual mode
+vnoremap <tab> %
 
 " change buffer mapping
 nnoremap <leader>6 :b#<CR>
