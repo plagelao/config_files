@@ -7,8 +7,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Bundles
-" Ruby on Rails: easy file navigation, enhanced syntax highlighting, and more
-Bundle "rails.vim"
 " plugin for ack
 Bundle "ack.vim"
 " A tree explorer plugin for navigating the filesystem
@@ -17,24 +15,25 @@ Bundle "The-NERD-tree"
 Bundle "cucumber.zip"
 " Wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
 Bundle "endwise.vim"
-" Delete/change/add parentheses/quotes/XML-tags/much more with ease
-Bundle "surround.vim"
-" Pairs of handy bracket mappings
-Bundle "unimpaired.vim"
 " Ruby refactoring tool
 Bundle "http://github.com/ecomba/vim-ruby-refactoring.git"
 " Clojure plugin
 Bundle "VimClojure"
-" CoffeeScript plugin
-Bundle "vim-coffee-script"
 " Solarized colorscheme
 Bundle "git://github.com/altercation/vim-colors-solarized.git"
 " Comma-T
 Bundle "Command-T"
-" Autocompile CoffeeScript files when saved
-autocmd BufWritePost *.coffee silent CoffeeMake! -b | cwindow
+" ctrlp colorscheme
+Bundle "git://github.com/kien/ctrlp.vim.git"
+" syntastic
+Bundle "git://github.com/scrooloose/syntastic.git"
+" CoffeeScript plugin
+Bundle "vim-coffee-script"
 
 
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_jump=1
+let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
 filetype plugin on " loads file type associated plugin 
 
@@ -74,7 +73,7 @@ set showmode
 " status line
 set showcmd
 set laststatus=2
-set statusline=%f\ %(%m%r%h\ %)%([%Y]%)%=%<%-20{getcwd()}\ [b%n]\ %l/%L\ ~\ %p%%\ \
+set statusline=%f\ %(%m%r%h\ %)%([%Y]%)%=%<%-20{getcwd()}\ [b%n]\ ~\ %L\ lines\
 
 " shows line numbers
 set number
@@ -138,7 +137,7 @@ nnoremap <tab> %
 vnoremap <tab> %
 
 " change buffer mapping
-nnoremap <leader>6 :b#<CR>
+nnoremap <leader>, :b#<CR>
 
 " remove spaces mapping
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
@@ -146,9 +145,6 @@ nnoremap <leader>T :%s/\t/  /<cr>
 
 " change symbol key hashes to ruby 1.9 syntax mapper
 map <leader>H :%s/:\(\w\+\) =>/\1:<CR>``
-
-" Ack maping
-nnoremap <leader>a :Ack 
 
 " NERDTree maping
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
