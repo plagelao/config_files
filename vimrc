@@ -21,14 +21,14 @@ Bundle "http://github.com/ecomba/vim-ruby-refactoring.git"
 Bundle "VimClojure"
 " Solarized colorscheme
 Bundle "git://github.com/altercation/vim-colors-solarized.git"
-" Comma-T
-Bundle "Command-T"
 " ctrlp colorscheme
 Bundle "git://github.com/kien/ctrlp.vim.git"
 " syntastic
 Bundle "git://github.com/scrooloose/syntastic.git"
 " CoffeeScript plugin
 Bundle "vim-coffee-script"
+" Puppet
+Bundle "git://github.com/rodjek/vim-puppet.git"
 
 
 let g:syntastic_enable_signs=1
