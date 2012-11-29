@@ -149,6 +149,12 @@ map <leader>H :%s/:\(\w\+\) =>/\1:<CR>``
 " NERDTree maping
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 
+" ctrlp options
+let g:ctrlp_map = '<leader>t'
+let g:ctrlp_working_path_mode = 2
+set wildignore+=*.o,*.obj,.git,*.swp,tmp
+let g:ctrlp_custom_ignore = '\.git$\|\.svn$|\.swp$|\.o$'
+
 " From here I have no idea what it means
 set modelines=10
 
