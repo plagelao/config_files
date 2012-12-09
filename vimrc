@@ -30,7 +30,6 @@ Bundle "vim-coffee-script"
 " Puppet
 Bundle "git://github.com/rodjek/vim-puppet.git"
 
-
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
@@ -108,6 +107,9 @@ set wildmenu
 " sets how many lines of history VIM has to remember
 set history=1000
 
+" Selected window wider than unselected one
+set winwidth=81
+
 " indicates a fast terminal connection
 set ttyfast
 
@@ -127,9 +129,6 @@ set showmatch
 set backupdir=~/.vim/backups,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim/backups,~/.tmp,~/tmp,/var/tmp,/tmp
 
-" understands :W as :w
-command! W :w
-
 " tab matches brackets
 " in normal mode
 nnoremap <tab> %
@@ -143,9 +142,6 @@ nnoremap <leader>, :b#<CR>
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>T :%s/\t/  /<cr>
 
-" change symbol key hashes to ruby 1.9 syntax mapper
-map <leader>H :%s/:\(\w\+\) =>/\1:<CR>``
-
 " NERDTree maping
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 
@@ -158,13 +154,10 @@ let g:ctrlp_custom_ignore = '\.git$\|\.svn$|\.swp$|\.o$'
 " From here I have no idea what it means
 set modelines=10
 
-"Save on losing focus
-"au FocusLost * :wa
-
-
 "Makes vim notice the rvm configuration
 set shell=/bin/sh
 
+"Find and replace (Not very good though)
 function! FindAndReplace(...)
   let args =  a:000 + ['.']
   execute  join(['args `Ack ',join(['-l', args[0], args[2]]),'`'])
