@@ -21,7 +21,7 @@ Bundle "http://github.com/ecomba/vim-ruby-refactoring.git"
 Bundle "VimClojure"
 " Solarized colorscheme
 Bundle "git://github.com/altercation/vim-colors-solarized.git"
-" ctrlp colorscheme
+" ctrlp
 Bundle "git://github.com/kien/ctrlp.vim.git"
 " syntastic
 Bundle "git://github.com/scrooloose/syntastic.git"
@@ -29,10 +29,14 @@ Bundle "git://github.com/scrooloose/syntastic.git"
 Bundle "vim-coffee-script"
 " Puppet
 Bundle "git://github.com/rodjek/vim-puppet.git"
+"Powerline
+Bundle "git://github.com/Lokaltog/vim-powerline.git"
 
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+
+" let g:Powerline_symbols = 'fancy'
 
 filetype plugin on " loads file type associated plugin 
 
@@ -72,7 +76,7 @@ set showmode
 " status line
 set showcmd
 set laststatus=2
-set statusline=%f\ %(%m%r%h\ %)%([%Y]%)%=%<%-20{getcwd()}\ [b%n]\ ~\ %L\ lines\
+"set statusline=%f\ %(%m%r%h\ %)%([%Y]%)%=%<%-20{getcwd()}\ [b%n]\ ~\ %L\ lines\
 
 " shows line numbers
 set number
