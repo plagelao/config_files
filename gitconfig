@@ -1,0 +1,15 @@
+[user]
+  name = Alberto
+  email = plagelao@gmail.com
+[apply]
+  whitespace = fix
+[color]
+  ui = auto
+  diff = auto
+  status = auto
+[alias]
+  st = status
+  l = "!. ~/.githelpers && pretty_git_log"
+  la = !git l --all
+  r = !git l -30
+  ra = !git r --all
