@@ -15,8 +15,6 @@ Bundle "endwise.vim"
 Bundle "http://github.com/ecomba/vim-ruby-refactoring.git"
 " Clojure plugin
 Bundle "VimClojure"
-" Solarized colorscheme
-Bundle "git://github.com/altercation/vim-colors-solarized.git"
 " ctrlp
 Bundle "git://github.com/kien/ctrlp.vim.git"
 " syntastic
@@ -25,14 +23,10 @@ Bundle "git://github.com/scrooloose/syntastic.git"
 Bundle "vim-coffee-script"
 " Puppet
 Bundle "git://github.com/rodjek/vim-puppet.git"
-"Powerline
-Bundle "git://github.com/Lokaltog/vim-powerline.git"
 
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
-
-" let g:Powerline_symbols = 'fancy'
 
 " no vi compatibility
 set nocompatible
@@ -54,7 +48,7 @@ set ignorecase
 set smartcase
 " highlight current line
 set cursorline
-set cmdheight=2
+set cmdheight=1
 set switchbuf=useopen
 set numberwidth=5
 set showtabline=2
@@ -87,8 +81,7 @@ let mapleader = ","
 " colors
 :set t_Co=256
 :set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
+:color grb256
 
 " encoding
 set encoding=utf-8
@@ -120,6 +113,10 @@ let g:ctrlp_working_path_mode = 2
 set wildignore+=*.o,*.obj,.git,*.swp,tmp
 let g:ctrlp_custom_ignore = '\.git$\|\.svn$|\.swp$|\.o$'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" STATUS LINE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+:set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS

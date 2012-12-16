@@ -42,17 +42,3 @@ export PATH="/usr/local/heroku/bin:$PATH"
 #DBs
 alias start_redis="redis-server /usr/local/etc/redis.conf"
 alias start_mongo="mongod run --config /usr/local/Cellar/mongodb/2.0.4-x86_64/mongod.conf"
-
-#git
-blame() {
-  git ls-tree -r HEAD|
-  sed -re 's/^.{53}//'|
-  while read filename; do file "$filename"; done|
-  grep -E ': .*text'|
-  sed -r -e 's/: .*//'|
-  while read filename; do git blame "$filename"; done|
-  sed -r -e 's/.*\((.*)[0-9]{4}-[0-9]{2}-[0-9]{2} .*/\1/' -e 's/ +$//'|
-  sort|
-  uniq -c;
-}
-alias commits="git shortlog -s -n"
