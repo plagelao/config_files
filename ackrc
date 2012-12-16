@@ -1,1 +1,12 @@
---type-add=ruby=.haml,.sass,.scss,.rake,.feature,.ejs,.coffee
+# lexically sort filenames
+--sort-files
+
+--type-add=ruby=rake,haml
+--type-add=vim=vimrc
+--type-add=js=json,coffee
+--type-set=cucumber=feature
+--type-set=css=sass
+
+# add types ack doesn't know about
+--type-set=MARKDOWN=md,mkd,markdown
+--type-set=RDOC=rdoc

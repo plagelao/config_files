@@ -7,10 +7,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Bundles
-" plugin for ack
-Bundle "ack.vim"
-" A tree explorer plugin for navigating the filesystem
-Bundle "The-NERD-tree"
 " provides syntax highlightling, indenting, and a filetype plugin for Cucumber
 Bundle "cucumber.zip"
 " Wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
@@ -38,106 +34,78 @@ let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
 " let g:Powerline_symbols = 'fancy'
 
-filetype plugin on " loads file type associated plugin 
+" no vi compatibility
+set nocompatible
+" enable unsaved buffers
+set hidden
+" remember more commands and search history
+set history=1000
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set autoindent
+set laststatus=2
+set showmatch
+set incsearch
+set hlsearch
+" make searches case-sensitive only if they contain upper-case characters
+set ignorecase
+set smartcase
+" highlight current line
+set cursorline
+set cmdheight=2
+set switchbuf=useopen
+set numberwidth=5
+set showtabline=2
+set winwidth=79
+"Makes vim notice the rvm configuration
+set shell=/bin/sh
+" Prevent Vim from clobbering the scrollback buffer. See
+" http://www.shallowsky.com/linux/noaltscreen.html
+set t_ti= t_te=
+" keep more context when scrolling off the end of a buffer
+set scrolloff=3
+" intuitive backspacing in insert mode
+set backspace=indent,eol,start
+" status line
+set showcmd
+" file syntax color on
+syntax on
+" Enable file type detection.
+" Use the default filetype settings, so that mail gets 'tw' set to 72,
+" 'cindent' is on in C files, etc.
+" Also load indent files, to automatically do language-dependent indenting.
+filetype plugin indent on
+" use emacs-style tab completion when selecting files, etc
+set wildmode=longest,list
+" make tab completion for files/buffers act like bash
+set wildmenu
 
 let mapleader = ","
 
-" file syntax color on
-syntax enable
-filetype on
-
 " colors
-set t_Co=256
+:set t_Co=256
+:set background=dark
 let g:solarized_termcolors=256
-set background=dark
 colorscheme solarized
 
 " encoding
 set encoding=utf-8
 
-" indentation and tabs
-filetype indent on
-set tabstop=2
-set softtabstop=2
-set smarttab
-set expandtab
-set autoindent
-" no expand tab for make and python
-autocmd FileType make     set noexpandtab
-autocmd FileType python   set noexpandtab
-"
-" scrolling
-set scrolloff=3
-set shiftwidth=2
-
-" shows when you are in insert mode
-set showmode
-
-" status line
-set showcmd
-set laststatus=2
-"set statusline=%f\ %(%m%r%h\ %)%([%Y]%)%=%<%-20{getcwd()}\ [b%n]\ ~\ %L\ lines\
-
-" shows line numbers
-set number
-
-" intuitive backspacing in insert mode
-set backspace=indent,eol,start
-
-" highlight the line containing the cursor
-set cursorline
-
-" case insensitive searching but, any search with an uppercase character becomes a case sensitive search
-set ignorecase
-set smartcase
-
-" highlight search terms...
-set incsearch
-set hlsearch
-" remove highlighting mapping
-nnoremap <leader><space> :noh<cr>
-
 " shows unwanted whitespace
 set listchars=tab:-✈,trail:,extends:>
 set list!
 
-" enable unsaved buffers
-set hidden
-
-" file name completion completes only the longest possible part (bash style)
-set wildmode=list:longest
-set wildmenu
-
-" sets how many lines of history VIM has to remember
-set history=1000
-
-" Selected window wider than unselected one
-set winwidth=81
-
 " indicates a fast terminal connection
 set ttyfast
 
-" no vi compatibility
-set nocompatible
-
-" as rails IDE
-" From http://biodegradablegeek.com/2007/12/using-vim-as-a-complete-ruby-on-rails-ide/
-" ask what to do about unsaved/read-only files
-set cf  " Enable error files & error jumping.
 " save the file when you change buffers
 set autowrite  " Writes on make/shell commands
-" Show matching brackets
-set showmatch
 
 " remove swap and backup files from your working directory
 set backupdir=~/.vim/backups,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim/backups,~/.tmp,~/tmp,/var/tmp,/tmp
-
-" tab matches brackets
-" in normal mode
-nnoremap <tab> %
-" in visual mode
-vnoremap <tab> %
 
 " change buffer mapping
 nnoremap <leader>, :b#<CR>
@@ -146,25 +114,68 @@ nnoremap <leader>, :b#<CR>
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>T :%s/\t/  /<cr>
 
-" NERDTree maping
-map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
-
 " ctrlp options
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_working_path_mode = 2
 set wildignore+=*.o,*.obj,.git,*.swp,tmp
 let g:ctrlp_custom_ignore = '\.git$\|\.svn$|\.swp$|\.o$'
 
-" From here I have no idea what it means
-set modelines=10
 
-"Makes vim notice the rvm configuration
-set shell=/bin/sh
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CUSTOM AUTOCMDS
+" Stolen from Gary Bernhardt
+" (https://github.com/garybernhardt/dotfiles/blob/master/.vimrc)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup vimrcEx
+  " Clear all autocmds in the group
+  autocmd!
+  " Jump to last cursor position unless it's invalid or in an event handler
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
 
-"Find and replace (Not very good though)
-function! FindAndReplace(...)
-  let args =  a:000 + ['.']
-  execute  join(['args `Ack ',join(['-l', args[0], args[2]]),'`'])
-  execute join(['argdo %s', args[0], args[1], 'gec'], '/')
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MISC KEY MAPS
+" Stolen from Gary Bernhardt
+" (https://github.com/garybernhardt/dotfiles/blob/master/.vimrc)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Clear the search buffer when hitting return
+function! MapCR()
+  nnoremap <cr> :nohlsearch<cr>
 endfunction
-command! -nargs=* -complete=file FindAndReplace call FindAndReplace(<f-args>)
+call MapCR()
+nnoremap <leader><leader> <c-^>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MULTIPURPOSE TAB KEY
+" Indent if we're at the beginning of a line. Else, do completion.
+" Stolen from Gary Bernhardt
+" (https://github.com/garybernhardt/dotfiles/blob/master/.vimrc)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" RENAME CURRENT FILE
+" Stolen from Gary Bernhardt
+" (https://github.com/garybernhardt/dotfiles/blob/master/.vimrc)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+map <leader>n :call RenameFile()<cr>
