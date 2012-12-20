@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh configuration.
 export PATH=/usr/local/bin:$PATH:/Applications/mit-scheme.app/Contents/Resources:/opt/local/bin:/usr/local/Cellar/vim/7.3.333/bin
+export PATH="$HOME/bin:$PATH"
 
 #/Users/plagelao/.rvm/gems/ruby-1.9.2-p0/bin:/Users/plagelao/.rvm/gems/ruby-1.9.2-p0@global/bin:/Users/plagelao/.rvm/rubies/ruby-1.9.2-p0/bin:/Users/plagelao/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
 export ZSH=$HOME/.oh-my-zsh
