@@ -1,10 +1,7 @@
 " vundle
 set rtp+=~/.vim/vundle.git/
+let g:vundle_log = []
 call vundle#rc()
-
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
 
 " Bundles
 " provides syntax highlightling, indenting, and a filetype plugin for Cucumber
@@ -23,6 +20,8 @@ Bundle "git://github.com/scrooloose/syntastic.git"
 Bundle "vim-coffee-script"
 " Puppet
 Bundle "git://github.com/rodjek/vim-puppet.git"
+" Scala
+Bundle 'derekwyatt/vim-scala'
 
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
@@ -77,6 +76,8 @@ set wildmode=longest,list
 set wildmenu
 
 let mapleader = ","
+" punish slow fingers, fix O lag
+:set timeout timeoutlen=3000 ttimeoutlen=100
 
 " colors
 :set t_Co=256
@@ -107,12 +108,18 @@ nnoremap <leader>, :b#<CR>
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>T :%s/\t/  /<cr>
 
+" Escape with jj
+imap jj <Esc>
+
 " ctrlp options
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_working_path_mode = 2
 set wildignore+=*.o,*.obj,.git,*.swp,tmp
 let g:ctrlp_custom_ignore = '\.git$\|\.svn$|\.swp$|\.o$'
 
+if has("autocmd")
+  au BufReadPost *.rkt,*.rktl set filetype=scheme
+endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

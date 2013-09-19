@@ -1,9 +1,13 @@
 # Path to your oh-my-zsh configuration.
-export PATH=/usr/local/bin:$PATH:/Applications/mit-scheme.app/Contents/Resources:/opt/local/bin:/usr/local/Cellar/vim/7.3.333/bin
+export PATH=/usr/local/bin:$PATH:/Applications/mit-scheme.app/Contents/Resources:/opt/local/bin:/usr/local/Cellar/vim/7.3.333/bin:/usr/local/Cellar/smlnj/110.75/libexec/bin
 export PATH="$HOME/bin:$PATH"
+export HOMEBREW_BREW_FILE="/usr/local/bin/brew"
 
 #/Users/plagelao/.rvm/gems/ruby-1.9.2-p0/bin:/Users/plagelao/.rvm/gems/ruby-1.9.2-p0@global/bin:/Users/plagelao/.rvm/rubies/ruby-1.9.2-p0/bin:/Users/plagelao/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
 export ZSH=$HOME/.oh-my-zsh
+
+export HISTSIZE=2000
+export SAVEHIST=3000
 
 # Set to the name theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -43,3 +47,5 @@ export PATH="/usr/local/heroku/bin:$PATH"
 #DBs
 alias start_redis="redis-server /usr/local/etc/redis.conf"
 alias start_mongo="mongod run --config /usr/local/Cellar/mongodb/2.0.4-x86_64/mongod.conf"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
