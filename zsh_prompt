@@ -1,0 +1,22 @@
+setopt PROMPT_SUBST
+
+autoload -Uz vcs_info
+
+zstyle ':vcs_info:*' formats      \
+    '%F{5}on %F{2}%b%F{5} %f '
+
+zstyle ':vcs_info:*' enable git
+
+vcs_info_wrapper() {
+  vcs_info
+  if [ -n "$vcs_info_msg_0_" ]; then
+    echo "%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
+  fi
+}
+
+function prompt_char {
+  echo '$'
+}
+
+PROMPT='[%T] %(!.%F{red}.%F{cyan}%n%f:%{%~%${#PWD}G%} %F%f%(!.%F{red}.)%f$(vcs_info_wrapper)
+$(prompt_char) '

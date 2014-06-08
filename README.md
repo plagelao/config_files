@@ -10,6 +10,8 @@ Then link up as many files as you want to use...
         ln -sf vimrc ~/.vimrc
         ln -sf vim ~/.vim
         ln -sf gitconfig ~/.gitconfig
+        ln -sf zshrc ~/.zshrc
+        ln -sf zsh_prompt ~/.prompt
 
 Then, launch Vim and run
 
