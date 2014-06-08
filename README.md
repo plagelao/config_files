@@ -12,6 +12,7 @@ Then link up as many files as you want to use...
         ln -sf gitconfig ~/.gitconfig
         ln -sf zshrc ~/.zshrc
         ln -sf zsh_prompt ~/.prompt
+        ln -sf tmux.conf ~/.tmux.conf
 
 Then, launch Vim and run
 
