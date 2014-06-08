@@ -7,11 +7,9 @@ Update the submodules first
 
 Then link up as many files as you want to use...
 
-        cd ~
-        ln -sf config_files/vimrc ~/.vimrc
-        ln -sf config_files/vim ~/.vim
-        ln -sf config_files/gvimrc ~/.gvimrc
-        ln -sf config_files/ackrc ~/.ackrc
+        ln -sf vimrc ~/.vimrc
+        ln -sf vim ~/.vim
+        ln -sf gitconfig ~/.gitconfig
 
 Then, launch Vim and run
 

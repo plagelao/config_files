@@ -22,6 +22,9 @@ Bundle "vim-coffee-script"
 Bundle "git://github.com/rodjek/vim-puppet.git"
 " Scala
 Bundle 'derekwyatt/vim-scala'
+" Colorschem grb256
+Bundle 'quanganhdo/grb256'
+colorscheme grb256
 
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
