@@ -112,7 +112,8 @@ imap jj <Esc>
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_working_path_mode = 2
 set wildignore+=*.o,*.obj,.git,*.swp,tmp
-let g:ctrlp_custom_ignore = '\.git$\|\.svn$|\.swp$|\.o$'
+" let g:ctrlp_custom_ignore = '\.git$\|\.svn$|\.swp$|\.o$'
+map <leader>b :CtrlPBuffer<cr>
 
 if has("autocmd")
   au BufReadPost *.rkt,*.rktl set filetype=scheme
