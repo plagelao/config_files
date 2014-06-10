@@ -14,8 +14,6 @@ Bundle "http://github.com/ecomba/vim-ruby-refactoring.git"
 Bundle "VimClojure"
 " ctrlp
 Bundle "git://github.com/kien/ctrlp.vim.git"
-" syntastic
-Bundle "git://github.com/scrooloose/syntastic.git"
 " CoffeeScript plugin
 Bundle "vim-coffee-script"
 " Puppet
@@ -25,10 +23,6 @@ Bundle 'derekwyatt/vim-scala'
 " Colorschem grb256
 Bundle 'quanganhdo/grb256'
 colorscheme grb256
-
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_jump=1
-let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
 " no vi compatibility
 set nocompatible
