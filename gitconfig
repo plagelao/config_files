@@ -9,7 +9,8 @@
   status = auto
 [alias]
   st = status
-  l = "!. ~/.githelpers && pretty_git_log"
   la = !git l --all
   r = !git l -30
   ra = !git r --all
+  my-stats = "!. ~/.githelpers && production_additions_and_deletions"
+  my-stats-test = "!. ~/.githelpers && test_additions_and_deletions"
