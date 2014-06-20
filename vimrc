@@ -20,9 +20,6 @@ Bundle "vim-coffee-script"
 Bundle "git://github.com/rodjek/vim-puppet.git"
 " Scala
 Bundle 'derekwyatt/vim-scala'
-" Colorschem grb256
-Bundle 'quanganhdo/grb256'
-colorscheme grb256
 
 " no vi compatibility
 set nocompatible
@@ -79,7 +76,6 @@ let mapleader = ","
 " colors
 :set t_Co=256
 :set background=dark
-:color grb256
 
 " encoding
 set encoding=utf-8
@@ -111,7 +107,7 @@ imap jj <Esc>
 " ctrlp options
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_working_path_mode = 2
-set wildignore+=*.o,*.obj,.git,*.swp,tmp
+set wildignore+=*.o,*.obj,.git,*.swp,tmp,node_modules
 " let g:ctrlp_custom_ignore = '\.git$\|\.svn$|\.swp$|\.o$'
 map <leader>b :CtrlPBuffer<cr>
 
